@@ -189,7 +189,7 @@
     
     
 }
-#define shipSpeed 80
+#define shipSpeed 50
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration{
     
@@ -202,11 +202,11 @@
     float currentY = _ship.position.y;
     BOOL shouldMove = NO;
     float destY;
-    if (acceleration.x > 0.5) { // up
+    if (acceleration.x >= 0.35) { // up
         destY = currentY + (-1 * acceleration.x * shipSpeed);
         shouldMove = YES;
         CCLOG(@"Tilted: %@", @"UP");
-    } else if (acceleration.x < 0){ // down
+    } else if (acceleration.x < 0.15){ // down
         destY = currentY + (-1 * acceleration.x * shipSpeed);
         shouldMove = YES;
         CCLOG(@"Tilted: %@", @"DOWN");
